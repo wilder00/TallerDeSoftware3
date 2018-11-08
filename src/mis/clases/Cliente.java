@@ -34,5 +34,9 @@ public class Cliente {
         this.montoAPagar = montoAPagar;
     }
     
+    public String toString(){
+        return "D.N.I. : "+ this.dni+"\n"
+                + "Monto a pagar: "+ this.montoAPagar;
+    }
     
 }
