@@ -6,6 +6,7 @@
 package mis.clases;
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 import mis.clases.cola.ArrayCola;
 
 /**
@@ -67,17 +68,31 @@ public class Tienda {
         boolean insertado = false;
         //Quiero validar el caso en que la caja este llena de clientes, y el caso en que todas las cajas esten llenas
         
-        while(!insertado){
-            int num = ran.nextInt(TAM_CAJAS);
-            if(cajas[num]==null){
-            CajaDePago nuevaCaja = new CajaDePago();
-            cajas[num]= nuevaCaja;
-            }
-            if(!cajas[num].getClientes().colaLlena()){
-                cajas[num].agregarCliente(c);
-                insertado = true;
+        boolean todoLleno = true;
+        
+        for (int i = 0; i < this.TAM_CAJAS; i++) {
+            if(this.cajas[i]== null || !this.cajas[i].colaDeClientes().colaLlena()){
+                todoLleno = false;
+                break;
             }
         }
+        
+        if(!todoLleno){
+            while(!insertado){
+                int num = ran.nextInt(TAM_CAJAS);
+                if(cajas[num]==null){
+                    CajaDePago nuevaCaja = new CajaDePago();
+                    cajas[num]= nuevaCaja;
+                }
+                if(!cajas[num].getClientes().colaLlena()){
+                    cajas[num].agregarCliente(c);
+                    insertado = true;
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "no se pudo insertar al cliente porque todas las cajas estan llenas");
+        }
+        
     }
         
             
