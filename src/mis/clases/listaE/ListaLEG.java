@@ -1,6 +1,5 @@
 package mis.clases.listaE;
 
-import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import mis.clases.Tienda;
