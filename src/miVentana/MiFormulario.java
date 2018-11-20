@@ -63,33 +63,33 @@ public class MiFormulario extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelSucursalDefinido = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jTextFieldCodigoSucursalDefinido = new javax.swing.JTextField();
+        jButtonIngresarSucursalDefinido = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTextFieldDNICliente = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jTextFieldMontoAPagarCliente = new javax.swing.JTextField();
+        jButtonEncolarCliente = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jTextAreaRecaudacionDeCaja = new javax.swing.JTextArea();
+        jButtonVerRecaudacionDeCaja = new javax.swing.JButton();
+        jButtonclientesEnColaCaja1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jTableColaDeClientes = new javax.swing.JTable();
+        jButtonclientesEnColaCaja2 = new javax.swing.JButton();
+        jButtonclientesEnColaCaja3 = new javax.swing.JButton();
+        jButtonclientesEnColaCaja4 = new javax.swing.JButton();
+        jButtonclientesEnColaCaja5 = new javax.swing.JButton();
+        jButtonclientesEnColaCaja10 = new javax.swing.JButton();
+        jButtonclientesEnColaCaja9 = new javax.swing.JButton();
+        jButtonclientesEnColaCaja8 = new javax.swing.JButton();
+        jButtonclientesEnColaCaja7 = new javax.swing.JButton();
+        jButtonclientesEnColaCaja6 = new javax.swing.JButton();
+        jLabelCajaSeleccionada = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Recaudacion En El Supermercado");
@@ -280,17 +280,17 @@ public class MiFormulario extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(204, 204, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel3.setText("No Definió la sucursal");
+        jLabelSucursalDefinido.setText("No Definió la sucursal");
 
         jLabel4.setText("Codigo sucursal:");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCodigoSucursalDefinido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jTextFieldCodigoSucursalDefinidoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Ingresar");
+        jButtonIngresarSucursalDefinido.setText("Ingresar");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -300,24 +300,24 @@ public class MiFormulario extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldCodigoSucursalDefinido, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jButtonIngresarSucursalDefinido)
                 .addGap(24, 24, 24))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(117, 117, 117)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelSucursalDefinido, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(jLabelSucursalDefinido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
+                    .addComponent(jTextFieldCodigoSucursalDefinido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonIngresarSucursalDefinido)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18))
         );
@@ -328,7 +328,7 @@ public class MiFormulario extends javax.swing.JFrame {
 
         jLabel6.setText("Monto a pagar:");
 
-        jButton3.setText("Enconlar Cliente");
+        jButtonEncolarCliente.setText("Enconlar Cliente");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -343,11 +343,11 @@ public class MiFormulario extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                            .addComponent(jTextField4)))
+                            .addComponent(jTextFieldMontoAPagarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                            .addComponent(jTextFieldDNICliente)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(112, 112, 112)
-                        .addComponent(jButton3)))
+                        .addComponent(jButtonEncolarCliente)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -356,13 +356,13 @@ public class MiFormulario extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDNICliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMontoAPagarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(jButtonEncolarCliente)
                 .addGap(48, 48, 48))
         );
 
@@ -390,15 +390,15 @@ public class MiFormulario extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(153, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "Clientes en cola"));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        jTextAreaRecaudacionDeCaja.setColumns(20);
+        jTextAreaRecaudacionDeCaja.setRows(5);
+        jScrollPane3.setViewportView(jTextAreaRecaudacionDeCaja);
 
-        jButton5.setText("Ver Recaudacion de Caja");
+        jButtonVerRecaudacionDeCaja.setText("Ver Recaudacion de Caja");
 
-        jButton6.setText("Caja 1");
+        jButtonclientesEnColaCaja1.setText("Caja 1");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTableColaDeClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -409,37 +409,37 @@ public class MiFormulario extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane4.setViewportView(jTable3);
+        jScrollPane4.setViewportView(jTableColaDeClientes);
 
-        jButton17.setText("Caja 2");
+        jButtonclientesEnColaCaja2.setText("Caja 2");
 
-        jButton18.setText("Caja 3");
+        jButtonclientesEnColaCaja3.setText("Caja 3");
 
-        jButton19.setText("Caja 4");
+        jButtonclientesEnColaCaja4.setText("Caja 4");
 
-        jButton20.setText("Caja 5");
-        jButton20.addActionListener(new java.awt.event.ActionListener() {
+        jButtonclientesEnColaCaja5.setText("Caja 5");
+        jButtonclientesEnColaCaja5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton20ActionPerformed(evt);
+                jButtonclientesEnColaCaja5ActionPerformed(evt);
             }
         });
 
-        jButton21.setText("Caja 10");
+        jButtonclientesEnColaCaja10.setText("Caja 10");
 
-        jButton22.setText("Caja 9");
+        jButtonclientesEnColaCaja9.setText("Caja 9");
 
-        jButton23.setText("Caja 8");
+        jButtonclientesEnColaCaja8.setText("Caja 8");
 
-        jButton24.setText("Caja 7");
+        jButtonclientesEnColaCaja7.setText("Caja 7");
 
-        jButton25.setText("Caja 6");
-        jButton25.addActionListener(new java.awt.event.ActionListener() {
+        jButtonclientesEnColaCaja6.setText("Caja 6");
+        jButtonclientesEnColaCaja6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton25ActionPerformed(evt);
+                jButtonclientesEnColaCaja6ActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Caja no seleccionada");
+        jLabelCajaSeleccionada.setText("Caja no seleccionada");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -453,26 +453,26 @@ public class MiFormulario extends javax.swing.JFrame {
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton6)
-                                    .addComponent(jButton17)
-                                    .addComponent(jButton18)
-                                    .addComponent(jButton19)
-                                    .addComponent(jButton20))
+                                    .addComponent(jButtonclientesEnColaCaja1)
+                                    .addComponent(jButtonclientesEnColaCaja2)
+                                    .addComponent(jButtonclientesEnColaCaja3)
+                                    .addComponent(jButtonclientesEnColaCaja4)
+                                    .addComponent(jButtonclientesEnColaCaja5))
                                 .addGap(49, 49, 49)
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton25)
-                                    .addComponent(jButton24)
-                                    .addComponent(jButton23)
-                                    .addComponent(jButton22)
-                                    .addComponent(jButton21)))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButtonclientesEnColaCaja6)
+                                    .addComponent(jButtonclientesEnColaCaja7)
+                                    .addComponent(jButtonclientesEnColaCaja8)
+                                    .addComponent(jButtonclientesEnColaCaja9)
+                                    .addComponent(jButtonclientesEnColaCaja10)))
+                            .addComponent(jLabelCajaSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addGap(121, 121, 121)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButtonVerRecaudacionDeCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 50, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -484,32 +484,32 @@ public class MiFormulario extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jButton25)
+                                .addComponent(jButtonclientesEnColaCaja6)
                                 .addGap(35, 35, 35)
-                                .addComponent(jButton24)
+                                .addComponent(jButtonclientesEnColaCaja7)
                                 .addGap(35, 35, 35)
-                                .addComponent(jButton23)
+                                .addComponent(jButtonclientesEnColaCaja8)
                                 .addGap(35, 35, 35)
-                                .addComponent(jButton22)
+                                .addComponent(jButtonclientesEnColaCaja9)
                                 .addGap(35, 35, 35)
-                                .addComponent(jButton21))
+                                .addComponent(jButtonclientesEnColaCaja10))
                             .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jButton6)
+                                .addComponent(jButtonclientesEnColaCaja1)
                                 .addGap(35, 35, 35)
-                                .addComponent(jButton17)
+                                .addComponent(jButtonclientesEnColaCaja2)
                                 .addGap(35, 35, 35)
-                                .addComponent(jButton18)
+                                .addComponent(jButtonclientesEnColaCaja3)
                                 .addGap(35, 35, 35)
-                                .addComponent(jButton19)
+                                .addComponent(jButtonclientesEnColaCaja4)
                                 .addGap(35, 35, 35)
-                                .addComponent(jButton20))))
+                                .addComponent(jButtonclientesEnColaCaja5))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jLabel7))
+                    .addComponent(jButtonVerRecaudacionDeCaja)
+                    .addComponent(jLabelCajaSeleccionada))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -569,17 +569,17 @@ public class MiFormulario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jTextFieldCodigoSucursalDefinidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoSucursalDefinidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextFieldCodigoSucursalDefinidoActionPerformed
 
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+    private void jButtonclientesEnColaCaja5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton20ActionPerformed
+    }//GEN-LAST:event_jButtonclientesEnColaCaja5ActionPerformed
 
-    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+    private void jButtonclientesEnColaCaja6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton25ActionPerformed
+    }//GEN-LAST:event_jButtonclientesEnColaCaja6ActionPerformed
 
     private void jButtonListarTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarTActionPerformed
          int codigo = Integer.parseInt(jTextFieldCodigoT.getText());
@@ -653,31 +653,31 @@ public class MiFormulario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButtonDeleteT;
+    private javax.swing.JButton jButtonEncolarCliente;
+    private javax.swing.JButton jButtonIngresarSucursalDefinido;
     private javax.swing.JButton jButtonListarT;
     private javax.swing.JButton jButtonRecaudacionT;
     private javax.swing.JButton jButtonVerLista;
+    private javax.swing.JButton jButtonVerRecaudacionDeCaja;
+    private javax.swing.JButton jButtonclientesEnColaCaja1;
+    private javax.swing.JButton jButtonclientesEnColaCaja10;
+    private javax.swing.JButton jButtonclientesEnColaCaja2;
+    private javax.swing.JButton jButtonclientesEnColaCaja3;
+    private javax.swing.JButton jButtonclientesEnColaCaja4;
+    private javax.swing.JButton jButtonclientesEnColaCaja5;
+    private javax.swing.JButton jButtonclientesEnColaCaja6;
+    private javax.swing.JButton jButtonclientesEnColaCaja7;
+    private javax.swing.JButton jButtonclientesEnColaCaja8;
+    private javax.swing.JButton jButtonclientesEnColaCaja9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelCajaSeleccionada;
+    private javax.swing.JLabel jLabelSucursalDefinido;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -693,16 +693,16 @@ public class MiFormulario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTableColaDeClientes;
     private javax.swing.JTable jTableListaTienda;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextArea jTextAreaRecaudacionDeCaja;
     private javax.swing.JTextField jTextFieldCodigoEliminar;
+    private javax.swing.JTextField jTextFieldCodigoSucursalDefinido;
     private javax.swing.JTextField jTextFieldCodigoT;
+    private javax.swing.JTextField jTextFieldDNICliente;
     private javax.swing.JTextField jTextFieldDistritoT;
+    private javax.swing.JTextField jTextFieldMontoAPagarCliente;
     // End of variables declaration//GEN-END:variables
 
 
