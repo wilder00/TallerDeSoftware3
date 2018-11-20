@@ -90,7 +90,7 @@ public class CajaDePago {
                 monto = this.clientes.desencolar().getMontoAPagar() + monto;
                 
             }
-            this.montoRecaudadoEnCaja = monto;
+            this.montoRecaudadoEnCaja = this.montoRecaudadoEnCaja+monto;
         }
     
     

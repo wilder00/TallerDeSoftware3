@@ -122,7 +122,7 @@ public class MiFormulario extends javax.swing.JFrame {
             fila = new String[2];
             cli = colaClientes.desencolar();
             fila[0] = cli.getDni();
-            fila[1] = String.valueOf(cli.getMontoAPagar()) ;
+            fila[1] = "s/. "+String.valueOf(cli.getMontoAPagar()) ;
             this.modeloTablaCliente.addRow(fila);
         }
         jTableColaDeClientes.setModel(this.modeloTablaCliente);
@@ -505,6 +505,11 @@ public class MiFormulario extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTextAreaRecaudacionDeCaja);
 
         jButtonVerRecaudacionDeCaja.setText("Ver Recaudacion de Caja");
+        jButtonVerRecaudacionDeCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerRecaudacionDeCajaActionPerformed(evt);
+            }
+        });
 
         jButtonclientesEnColaCaja1.setText("Caja 1");
         jButtonclientesEnColaCaja1.addActionListener(new java.awt.event.ActionListener() {
@@ -762,25 +767,43 @@ public class MiFormulario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonListarTActionPerformed
 
     private void jButtonDeleteTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteTActionPerformed
-          int codigo = Integer.parseInt(jTextFieldCodigoEliminar.getText());
+        String cod = jTextFieldCodigoEliminar.getText();
+        if(!cod.equalsIgnoreCase("")){
+            int codigo = Integer.parseInt(cod);
+            this.Sucursales.eliminarDato(codigo);
+            
+            jTextFieldCodigoEliminar.setText("");
+        }else{
+            JOptionPane.showMessageDialog(this, "necesita ingresar un codigo");
+        }
+        
           
           
           
     }//GEN-LAST:event_jButtonDeleteTActionPerformed
 
     private void jButtonIngresarSucursalDefinidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarSucursalDefinidoActionPerformed
-        
-        int id = Integer.parseInt(jTextFieldCodigoSucursalDefinido.getText());
-        if(this.Sucursales.existeSucursal(id)){
-            this.codSucursalDefinido = id;
-            jLabelSucursalDefinido.setText("Esta en la Sucursal : "+this.codSucursalDefinido);
-            this.comprobarCajas();
-            jButtonEncolarCliente.setEnabled(true);
-            
-            
+        String cod = jTextFieldCodigoSucursalDefinido.getText();
+        if(!cod.equalsIgnoreCase("")){
+            int id = Integer.parseInt(cod);
+            if(this.Sucursales.existeSucursal(id)){
+                this.codSucursalDefinido = id;
+                jLabelSucursalDefinido.setText("Esta en la Sucursal : "+this.codSucursalDefinido);
+                this.comprobarCajas();
+                jButtonEncolarCliente.setEnabled(true);
+
+                String[] tituloTablaCliente = {"Dni","Monto A Pagar"};
+                this.modeloTablaCliente = new DefaultTableModel(null,tituloTablaCliente);
+                jTableColaDeClientes.setModel(this.modeloTablaCliente);
+                   
+            }else{
+                JOptionPane.showMessageDialog(this, "no existe la sucursal de id: "+(id));
+            }
+            jTextFieldCodigoSucursalDefinido.setText("");
         }else{
-            JOptionPane.showMessageDialog(this, "no esxiste la sucursal de id: "+(id));
+            JOptionPane.showMessageDialog(this, "necesita agregar un id");
         }
+        
         
         
         
@@ -841,6 +864,13 @@ public class MiFormulario extends javax.swing.JFrame {
     private void jButtonclientesEnColaCaja10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja10ActionPerformed
         this.prepararParaCaja(10);
     }//GEN-LAST:event_jButtonclientesEnColaCaja10ActionPerformed
+
+    private void jButtonVerRecaudacionDeCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerRecaudacionDeCajaActionPerformed
+        CajaDePago c = this.Sucursales.getTiendabyId(this.codSucursalDefinido).getCajas()[this.codCajaDefinido];
+        c.calcularMontoRecaudado();
+        String info = String.valueOf(c.getMontoRecaudadoEnCaja());
+        jTextAreaRecaudacionDeCaja.setText("El monto recaudado en caja es: s/. "+ info);
+    }//GEN-LAST:event_jButtonVerRecaudacionDeCajaActionPerformed
 
     
     
