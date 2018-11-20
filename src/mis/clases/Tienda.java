@@ -5,6 +5,12 @@
  */
 package mis.clases;
 
+import conexionBD.Conectar;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import mis.clases.cola.ArrayCola;
@@ -20,12 +26,15 @@ public class Tienda {
     
     private CajaDePago []cajas;
     private final int TAM_CAJAS = 10;
-
+    
+    Conectar conectar;
     //Constructor con parámetro (código de sucursal, distrito) aquí el arreglo se crea vacío.
+    
     public Tienda(int codSucursal, String distrito) {
         this.codSucursal = codSucursal;
         this.distrito = distrito;
         this.cajas = new CajaDePago[TAM_CAJAS];
+        conectar = new Conectar();
     }
 
     public int getCodSucursal() {
@@ -77,6 +86,23 @@ public class Tienda {
                 if(cajas[num]==null){
                     CajaDePago nuevaCaja = new CajaDePago();
                     cajas[num]= nuevaCaja;
+                    String sql="insert into cajadepago(cod_sucursal, num_de_caja, monto_recaudado) values(?,?,?)";        
+                    Conectar cn=new Conectar();        
+                    Connection con=cn.conexion();
+                    try {
+                        PreparedStatement pst=con.prepareStatement(sql);
+                        pst.setInt(1, this.codSucursal);
+                        pst.setInt(2, num);
+                        pst.setFloat(3, 0.0f);
+                        
+                        int n=pst.executeUpdate();
+                    if(n!=0){
+                        JOptionPane.showMessageDialog(null, "Valores cargados .......");
+                    }
+
+                } catch (SQLException e) {
+                    System.out.println("Error encontrado  "+e.toString());
+                }
                 }
                 if(!cajas[num].getClientes().colaLlena()){
                     cajas[num].agregarCliente(c);

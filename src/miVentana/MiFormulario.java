@@ -5,6 +5,10 @@
  */
 package miVentana;
 
+import conexionBD.Conectar;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import mis.clases.CajaDePago;
@@ -25,6 +29,7 @@ public class MiFormulario extends javax.swing.JFrame {
     DefaultTableModel modeloTablaCliente;
     int codSucursalDefinido;
     int codCajaDefinido;
+    Conectar conectar;
     /**
      * Creates new form MiFormulario
      */
@@ -38,6 +43,7 @@ public class MiFormulario extends javax.swing.JFrame {
         this.modeloTablaCliente = new DefaultTableModel(null,tituloTablaCliente);
         jTableListaTienda.setModel(modelo);
         jTableColaDeClientes.setModel(this.modeloTablaCliente);
+        conectar = new Conectar();
         
         
         //desabilitando botones
@@ -128,6 +134,26 @@ public class MiFormulario extends javax.swing.JFrame {
         jTableColaDeClientes.setModel(this.modeloTablaCliente);
         
         
+    }
+    
+    private void actualizarListaTiendas(){
+        
+         String[]Titulo = {"Codigo de sucursal","Distrito"};
+         modelo = new DefaultTableModel(null,Titulo);
+         
+         
+         NodoLEG<Tienda> aux = Sucursales.getPrimero();
+         String[]Registro;
+         while(aux!=null){
+             Registro = new String[2];
+             Registro[0] = String.valueOf(aux.getDato().getCodSucursal());
+             Registro[1] = aux.getDato().getDistrito();
+             
+             modelo.addRow(Registro);
+             aux = aux.getSiguiente();
+         }
+         
+         jTableListaTienda.setModel(modelo);
     }
     
     
@@ -745,23 +771,7 @@ public class MiFormulario extends javax.swing.JFrame {
          jTextFieldCodigoT.setText("");
          jTextFieldDistritoT.setText("");
          
-         
-         String[]Titulo = {"Codigo de sucursal","Distrito"};
-         modelo = new DefaultTableModel(null,Titulo);
-         
-         
-         NodoLEG<Tienda> aux = Sucursales.getPrimero();
-         String[]Registro;
-         while(aux!=null){
-             Registro = new String[2];
-             Registro[0] = String.valueOf(aux.getDato().getCodSucursal());
-             Registro[1] = aux.getDato().getDistrito();
-             
-             modelo.addRow(Registro);
-             aux = aux.getSiguiente();
-         }
-         
-         jTableListaTienda.setModel(modelo);
+         actualizarListaTiendas();
 
          
     }//GEN-LAST:event_jButtonListarTActionPerformed
@@ -771,7 +781,7 @@ public class MiFormulario extends javax.swing.JFrame {
         if(!cod.equalsIgnoreCase("")){
             int codigo = Integer.parseInt(cod);
             this.Sucursales.eliminarDato(codigo);
-            
+            this.actualizarListaTiendas();
             jTextFieldCodigoEliminar.setText("");
         }else{
             JOptionPane.showMessageDialog(this, "necesita ingresar un codigo");
@@ -817,7 +827,25 @@ public class MiFormulario extends javax.swing.JFrame {
             float montoAPagar = Float.parseFloat(monto);
             Cliente cli= new Cliente(dni, montoAPagar);
             int cajaInsertada = this.Sucursales.getTiendabyId(this.codSucursalDefinido).insertarclienteACaja(cli);
-            
+            if(cajaInsertada != -1){
+                Connection con = this.conectar.conexion();
+                String sql=" insert into cliente(dni, monto_a_pagar, num_de_caja, cod_sucursal) Values (?,?,?,?)";
+    
+                try {
+                    PreparedStatement pst = con.prepareStatement(sql);
+                    pst.setString(1, dni);
+                    pst.setFloat(2, montoAPagar);
+                    pst.setInt(3, cajaInsertada);
+                    pst.setInt(4, this.codSucursalDefinido);
+                    int n = pst.executeUpdate();
+                    if(n!=0){
+                        JOptionPane.showMessageDialog(null, "Valores cargados .......");
+                    }
+
+                } catch (SQLException e) {
+                    System.out.println("Error encontrado  "+e.toString());
+                }
+            }
             this.comprobarCajas();
         
         }else{

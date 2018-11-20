@@ -1,5 +1,9 @@
 package mis.clases.listaE;
 
+import conexionBD.Conectar;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import mis.clases.Tienda;
@@ -8,9 +12,12 @@ public class ListaLEG <E extends Tienda>{
     private NodoLEG<E> primero;
     private int talla;        // saber el numero de nodos
 
+    Conectar conectar;
+    
     public ListaLEG() {
         this.primero=null;
         this.talla=0;
+        conectar = new Conectar();
     }
 
     public NodoLEG<E> getPrimero() {
@@ -99,6 +106,22 @@ public class ListaLEG <E extends Tienda>{
                 ant.setSiguiente(aux.getSiguiente());
                 talla--;
             }
+            
+            
+            Connection con = this.conectar.conexion();
+            String sql="Delete from tienda where cod_sucursal = "+cod;
+            
+            try {
+                PreparedStatement pst=con.prepareStatement(sql);
+                int n=pst.executeUpdate();
+                if(n!=0){
+                    JOptionPane.showMessageDialog(null, "Valores eliminados .......");
+                }
+
+            } catch (SQLException e) {
+                System.out.println("Error encontrado  "+e.toString());
+            }
+            
         }else{
             JOptionPane.showMessageDialog(null, "No existe dato a eliminar");
         }       
@@ -135,7 +158,22 @@ public class ListaLEG <E extends Tienda>{
                 insertarAlFinal(x);
             }
         }
-        
+        Connection con = this.conectar.conexion();
+        String sql="insert into tienda(cod_sucursal,distrito) Values (?,?)";
+        int cod = x.getCodSucursal();
+        String dis = x.getDistrito();
+        try {
+            PreparedStatement pst=con.prepareStatement(sql);
+            pst.setInt(1, cod);
+            pst.setString(2, dis);
+            int n=pst.executeUpdate();
+            if(n!=0){
+                JOptionPane.showMessageDialog(null, "Valores cargados .......");
+            }
+                        
+        } catch (SQLException e) {
+            System.out.println("Error encontrado  "+e.toString());
+        }
     }
     
     
