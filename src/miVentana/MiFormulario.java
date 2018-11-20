@@ -7,7 +7,10 @@ package miVentana;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import mis.clases.CajaDePago;
+import mis.clases.Cliente;
 import mis.clases.Tienda;
+import mis.clases.cola.ArrayCola;
 import mis.clases.listaE.ListaLEG;
 import mis.clases.listaE.NodoLEG;
 
@@ -17,8 +20,11 @@ import mis.clases.listaE.NodoLEG;
  */
 public class MiFormulario extends javax.swing.JFrame {
     ListaLEG<Tienda> Sucursales;
+    ArrayCola<Cliente> clientes;
     DefaultTableModel modelo;
+    DefaultTableModel modeloTablaCliente;
     int codSucursalDefinido;
+    int codCajaDefinido;
     /**
      * Creates new form MiFormulario
      */
@@ -26,9 +32,12 @@ public class MiFormulario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(this);
         Sucursales = new ListaLEG();
-        String[]Titulo = {"Codigo de sucursal","Distrito"};
+        String[] Titulo = {"Codigo de sucursal","Distrito"};
+        String[] tituloTablaCliente = {"Dni","Monto A Pagar"};
         modelo = new DefaultTableModel(null,Titulo);
+        this.modeloTablaCliente = new DefaultTableModel(null,tituloTablaCliente);
         jTableListaTienda.setModel(modelo);
+        jTableColaDeClientes.setModel(this.modeloTablaCliente);
         
         
         //desabilitando botones
@@ -45,9 +54,83 @@ public class MiFormulario extends javax.swing.JFrame {
         jButtonclientesEnColaCaja10.setEnabled(false);
         jButtonVerRecaudacionDeCaja.setEnabled(false);
         //definir la sucursal en -1 que significa no definido;
-        codSucursalDefinido = -1;
+        this.codSucursalDefinido = -1;
+        this.codCajaDefinido = -1;
     }
 
+    //funciones internas 
+    private void comprobarCajas(){
+        
+        if(this.codSucursalDefinido != -1){
+            Tienda tienda = this.Sucursales.getTiendabyId(this.codSucursalDefinido);
+            if(tienda.cajaHabilitado(0))
+                jButtonclientesEnColaCaja1.setEnabled(true);
+            else
+                jButtonclientesEnColaCaja1.setEnabled(false);
+            if(tienda.cajaHabilitado(1))
+                jButtonclientesEnColaCaja2.setEnabled(true);
+            else
+                jButtonclientesEnColaCaja2.setEnabled(false);
+            if(tienda.cajaHabilitado(2))
+                jButtonclientesEnColaCaja3.setEnabled(true);
+            else
+                jButtonclientesEnColaCaja3.setEnabled(false);
+            if(tienda.cajaHabilitado(3))
+                jButtonclientesEnColaCaja4.setEnabled(true);
+            else
+                jButtonclientesEnColaCaja4.setEnabled(false);
+            if(tienda.cajaHabilitado(4))
+                jButtonclientesEnColaCaja5.setEnabled(true);
+            else
+                jButtonclientesEnColaCaja5.setEnabled(false);
+            if(tienda.cajaHabilitado(5))
+                jButtonclientesEnColaCaja6.setEnabled(true);
+            else
+                jButtonclientesEnColaCaja6.setEnabled(false);
+            if(tienda.cajaHabilitado(6))
+                jButtonclientesEnColaCaja7.setEnabled(true);
+            else
+                jButtonclientesEnColaCaja7.setEnabled(false);
+            if(tienda.cajaHabilitado(7))
+                jButtonclientesEnColaCaja8.setEnabled(true);
+            else
+                jButtonclientesEnColaCaja8.setEnabled(false);
+            if(tienda.cajaHabilitado(8))
+                jButtonclientesEnColaCaja9.setEnabled(true);
+            else
+                jButtonclientesEnColaCaja9.setEnabled(false);
+            if(tienda.cajaHabilitado(9))
+                jButtonclientesEnColaCaja10.setEnabled(true);
+            else
+                jButtonclientesEnColaCaja10.setEnabled(false);
+        }
+        
+    }
+    
+    private void prepararParaCaja(int numDeCaja){
+        this.codCajaDefinido = numDeCaja-1;
+        jLabelCajaSeleccionada.setText("caja: "+this.codCajaDefinido);
+        jButtonVerRecaudacionDeCaja.setEnabled(true);
+        
+        String[] tituloTablaCliente = {"Dni","Monto A Pagar"};
+        this.modeloTablaCliente = new DefaultTableModel(null,tituloTablaCliente);
+        CajaDePago caja = this.Sucursales.getTiendabyId(this.codSucursalDefinido).getCajas()[this.codCajaDefinido];
+        ArrayCola<Cliente> colaClientes = caja.colaDeClientes();
+        String[] fila;
+        Cliente cli;
+        while(!colaClientes.colaVacia()){
+            fila = new String[2];
+            cli = colaClientes.desencolar();
+            fila[0] = cli.getDni();
+            fila[1] = String.valueOf(cli.getMontoAPagar()) ;
+            this.modeloTablaCliente.addRow(fila);
+        }
+        jTableColaDeClientes.setModel(this.modeloTablaCliente);
+        
+        
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -351,6 +434,11 @@ public class MiFormulario extends javax.swing.JFrame {
         jLabel6.setText("Monto a pagar:");
 
         jButtonEncolarCliente.setText("Enconlar Cliente");
+        jButtonEncolarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEncolarClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -419,6 +507,11 @@ public class MiFormulario extends javax.swing.JFrame {
         jButtonVerRecaudacionDeCaja.setText("Ver Recaudacion de Caja");
 
         jButtonclientesEnColaCaja1.setText("Caja 1");
+        jButtonclientesEnColaCaja1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonclientesEnColaCaja1ActionPerformed(evt);
+            }
+        });
 
         jTableColaDeClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -434,10 +527,25 @@ public class MiFormulario extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTableColaDeClientes);
 
         jButtonclientesEnColaCaja2.setText("Caja 2");
+        jButtonclientesEnColaCaja2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonclientesEnColaCaja2ActionPerformed(evt);
+            }
+        });
 
         jButtonclientesEnColaCaja3.setText("Caja 3");
+        jButtonclientesEnColaCaja3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonclientesEnColaCaja3ActionPerformed(evt);
+            }
+        });
 
         jButtonclientesEnColaCaja4.setText("Caja 4");
+        jButtonclientesEnColaCaja4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonclientesEnColaCaja4ActionPerformed(evt);
+            }
+        });
 
         jButtonclientesEnColaCaja5.setText("Caja 5");
         jButtonclientesEnColaCaja5.addActionListener(new java.awt.event.ActionListener() {
@@ -447,12 +555,32 @@ public class MiFormulario extends javax.swing.JFrame {
         });
 
         jButtonclientesEnColaCaja10.setText("Caja 10");
+        jButtonclientesEnColaCaja10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonclientesEnColaCaja10ActionPerformed(evt);
+            }
+        });
 
         jButtonclientesEnColaCaja9.setText("Caja 9");
+        jButtonclientesEnColaCaja9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonclientesEnColaCaja9ActionPerformed(evt);
+            }
+        });
 
         jButtonclientesEnColaCaja8.setText("Caja 8");
+        jButtonclientesEnColaCaja8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonclientesEnColaCaja8ActionPerformed(evt);
+            }
+        });
 
         jButtonclientesEnColaCaja7.setText("Caja 7");
+        jButtonclientesEnColaCaja7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonclientesEnColaCaja7ActionPerformed(evt);
+            }
+        });
 
         jButtonclientesEnColaCaja6.setText("Caja 6");
         jButtonclientesEnColaCaja6.addActionListener(new java.awt.event.ActionListener() {
@@ -596,13 +724,14 @@ public class MiFormulario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoSucursalDefinidoActionPerformed
 
     private void jButtonclientesEnColaCaja5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja5ActionPerformed
-        // TODO add your handling code here:
+        this.prepararParaCaja(5);
     }//GEN-LAST:event_jButtonclientesEnColaCaja5ActionPerformed
 
     private void jButtonclientesEnColaCaja6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja6ActionPerformed
-        // TODO add your handling code here:
+        this.prepararParaCaja(6);
     }//GEN-LAST:event_jButtonclientesEnColaCaja6ActionPerformed
 
+    
     private void jButtonListarTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarTActionPerformed
          int codigo = Integer.parseInt(jTextFieldCodigoT.getText());
          String distrito = jTextFieldDistritoT.getText();
@@ -644,37 +773,74 @@ public class MiFormulario extends javax.swing.JFrame {
         int id = Integer.parseInt(jTextFieldCodigoSucursalDefinido.getText());
         if(this.Sucursales.existeSucursal(id)){
             this.codSucursalDefinido = id;
-            Tienda tienda = this.Sucursales.getTiendabyId(id);
-            
+            jLabelSucursalDefinido.setText("Esta en la Sucursal : "+this.codSucursalDefinido);
+            this.comprobarCajas();
             jButtonEncolarCliente.setEnabled(true);
-            if(tienda.cajaHabilitado(0))
-                jButtonclientesEnColaCaja1.setEnabled(true);
-            if(tienda.cajaHabilitado(1))
-                jButtonclientesEnColaCaja2.setEnabled(true);
-            if(tienda.cajaHabilitado(2))
-                jButtonclientesEnColaCaja3.setEnabled(true);
-            if(tienda.cajaHabilitado(3))
-                jButtonclientesEnColaCaja4.setEnabled(true);
-            if(tienda.cajaHabilitado(4))
-                jButtonclientesEnColaCaja5.setEnabled(true);
-            if(tienda.cajaHabilitado(5))
-                jButtonclientesEnColaCaja6.setEnabled(true);
-            if(tienda.cajaHabilitado(6))
-                jButtonclientesEnColaCaja7.setEnabled(true);
-            if(tienda.cajaHabilitado(7))
-                jButtonclientesEnColaCaja8.setEnabled(true);
-            if(tienda.cajaHabilitado(8))
-                jButtonclientesEnColaCaja9.setEnabled(true);
-            if(tienda.cajaHabilitado(9))
-                jButtonclientesEnColaCaja10.setEnabled(true);
+            
             
         }else{
-            JOptionPane.showMessageDialog(this, "no esxiste la sucursal de id: "+id);
+            JOptionPane.showMessageDialog(this, "no esxiste la sucursal de id: "+(id));
         }
         
         
         
     }//GEN-LAST:event_jButtonIngresarSucursalDefinidoActionPerformed
+
+    private void jButtonEncolarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEncolarClienteActionPerformed
+        String dni = jTextFieldDNICliente.getText();
+        String monto = jTextFieldMontoAPagarCliente.getText();
+        if(!dni.equalsIgnoreCase("") && !monto.equalsIgnoreCase("")){
+            
+            float montoAPagar = Float.parseFloat(monto);
+            Cliente cli= new Cliente(dni, montoAPagar);
+            int cajaInsertada = this.Sucursales.getTiendabyId(this.codSucursalDefinido).insertarclienteACaja(cli);
+            
+            this.comprobarCajas();
+        
+        }else{
+            JOptionPane.showMessageDialog(this, "tiene que insertar informacion de cliente");
+        }
+        
+        
+        
+        jTextFieldDNICliente.setText("");
+        jTextFieldMontoAPagarCliente.setText("");
+        
+    }//GEN-LAST:event_jButtonEncolarClienteActionPerformed
+
+    private void jButtonclientesEnColaCaja1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja1ActionPerformed
+        this.prepararParaCaja(1);
+        
+        
+    }//GEN-LAST:event_jButtonclientesEnColaCaja1ActionPerformed
+
+    private void jButtonclientesEnColaCaja2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja2ActionPerformed
+        this.prepararParaCaja(2);
+    }//GEN-LAST:event_jButtonclientesEnColaCaja2ActionPerformed
+
+    private void jButtonclientesEnColaCaja3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja3ActionPerformed
+        this.prepararParaCaja(3);
+    }//GEN-LAST:event_jButtonclientesEnColaCaja3ActionPerformed
+
+    private void jButtonclientesEnColaCaja4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja4ActionPerformed
+        this.prepararParaCaja(4);
+    }//GEN-LAST:event_jButtonclientesEnColaCaja4ActionPerformed
+
+    private void jButtonclientesEnColaCaja7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja7ActionPerformed
+        this.prepararParaCaja(7);
+    }//GEN-LAST:event_jButtonclientesEnColaCaja7ActionPerformed
+
+    private void jButtonclientesEnColaCaja8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja8ActionPerformed
+        this.prepararParaCaja(8);
+    }//GEN-LAST:event_jButtonclientesEnColaCaja8ActionPerformed
+
+    private void jButtonclientesEnColaCaja9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja9ActionPerformed
+        this.prepararParaCaja(9);
+    }//GEN-LAST:event_jButtonclientesEnColaCaja9ActionPerformed
+
+    private void jButtonclientesEnColaCaja10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclientesEnColaCaja10ActionPerformed
+        this.prepararParaCaja(10);
+    }//GEN-LAST:event_jButtonclientesEnColaCaja10ActionPerformed
 
     
     

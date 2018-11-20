@@ -610,6 +610,9 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Enconlar Cliente"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEncolarClienteActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -749,6 +752,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Caja 1"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonclientesEnColaCaja1ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane4">
                       <AuxValues>
@@ -770,16 +776,25 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Caja 2"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonclientesEnColaCaja2ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonclientesEnColaCaja3">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Caja 3"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonclientesEnColaCaja3ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonclientesEnColaCaja4">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Caja 4"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonclientesEnColaCaja4ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonclientesEnColaCaja5">
                       <Properties>
@@ -793,21 +808,33 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Caja 10"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonclientesEnColaCaja10ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonclientesEnColaCaja9">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Caja 9"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonclientesEnColaCaja9ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonclientesEnColaCaja8">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Caja 8"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonclientesEnColaCaja8ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonclientesEnColaCaja7">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Caja 7"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonclientesEnColaCaja7ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonclientesEnColaCaja6">
                       <Properties>

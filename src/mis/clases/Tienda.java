@@ -55,7 +55,8 @@ public class Tienda {
     // Método que seleccione aleatoriamente una caja e inserte un nuevo cliente a la cola,
     // en caso la caja no este habilitado debe crearla para insertar al cliente en la cola.
     
-    public void insertarclienteACaja(Cliente c){
+    public int insertarclienteACaja(Cliente c){
+        int cajaInsertada =-1;
         Random ran = new Random();
         
         boolean insertado = false;
@@ -79,12 +80,15 @@ public class Tienda {
                 }
                 if(!cajas[num].getClientes().colaLlena()){
                     cajas[num].agregarCliente(c);
+                    cajaInsertada = num;
                     insertado = true;
+                    JOptionPane.showMessageDialog(null, "cliente fue insertado en la caja "+(cajaInsertada+1));
                 }
             }
         }else{
             JOptionPane.showMessageDialog(null, "no se pudo insertar al cliente porque todas las cajas estan llenas");
         }
+        return cajaInsertada;
         
     }
         
