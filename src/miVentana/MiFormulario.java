@@ -31,7 +31,7 @@ public class MiFormulario extends javax.swing.JFrame {
         jTableListaTienda.setModel(modelo);
         
         
-        //desabilitando botoneas
+        //desabilitando botones
         jButtonEncolarCliente.setEnabled(false);
         jButtonclientesEnColaCaja1.setEnabled(false);
         jButtonclientesEnColaCaja2.setEnabled(false);
@@ -308,6 +308,11 @@ public class MiFormulario extends javax.swing.JFrame {
         });
 
         jButtonIngresarSucursalDefinido.setText("Ingresar");
+        jButtonIngresarSucursalDefinido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIngresarSucursalDefinidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -634,6 +639,47 @@ public class MiFormulario extends javax.swing.JFrame {
           
     }//GEN-LAST:event_jButtonDeleteTActionPerformed
 
+    private void jButtonIngresarSucursalDefinidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarSucursalDefinidoActionPerformed
+        
+        int id = Integer.parseInt(jTextFieldCodigoSucursalDefinido.getText());
+        if(this.Sucursales.existeSucursal(id)){
+            this.codSucursalDefinido = id;
+            Tienda tienda = this.Sucursales.getTiendabyId(id);
+            
+            jButtonEncolarCliente.setEnabled(true);
+            if(tienda.cajaHabilitado(0))
+                jButtonclientesEnColaCaja1.setEnabled(true);
+            if(tienda.cajaHabilitado(1))
+                jButtonclientesEnColaCaja2.setEnabled(true);
+            if(tienda.cajaHabilitado(2))
+                jButtonclientesEnColaCaja3.setEnabled(true);
+            if(tienda.cajaHabilitado(3))
+                jButtonclientesEnColaCaja4.setEnabled(true);
+            if(tienda.cajaHabilitado(4))
+                jButtonclientesEnColaCaja5.setEnabled(true);
+            if(tienda.cajaHabilitado(5))
+                jButtonclientesEnColaCaja6.setEnabled(true);
+            if(tienda.cajaHabilitado(6))
+                jButtonclientesEnColaCaja7.setEnabled(true);
+            if(tienda.cajaHabilitado(7))
+                jButtonclientesEnColaCaja8.setEnabled(true);
+            if(tienda.cajaHabilitado(8))
+                jButtonclientesEnColaCaja9.setEnabled(true);
+            if(tienda.cajaHabilitado(9))
+                jButtonclientesEnColaCaja10.setEnabled(true);
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "no esxiste la sucursal de id: "+id);
+        }
+        
+        
+        
+    }//GEN-LAST:event_jButtonIngresarSucursalDefinidoActionPerformed
+
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */

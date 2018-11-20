@@ -52,13 +52,6 @@ public class Tienda {
     
     
     
-    
-    
-    
-    
-    
-    
-    
     // Método que seleccione aleatoriamente una caja e inserte un nuevo cliente a la cola,
     // en caso la caja no este habilitado debe crearla para insertar al cliente en la cola.
     
@@ -119,6 +112,14 @@ public class Tienda {
         
         
     
+    //es una funcion de tienda para saber si la caja está habilitada por el numero de caja
+    public boolean cajaHabilitado(int numDeCaja){
+        boolean estado=true;
+        if(this.cajas[numDeCaja]==null){
+            estado=false;
+        }
+        return estado;
+    }
     
     
     

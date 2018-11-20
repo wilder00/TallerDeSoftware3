@@ -176,7 +176,35 @@ public class ListaLEG <E extends Tienda>{
         return mensaje;
     }
     
+    //funcion que retorna boolean si el codifo de tiendao sucursal existe
     
+    public boolean existeSucursal(int id){
+        NodoLEG<E> aux=primero;
+        boolean existe=false;
+        
+        while(aux!=null && !existe){
+            if(aux.getDato().getCodSucursal() == id){
+                existe = true;
+            }
+            aux=aux.getSiguiente();
+        }
+        return existe;
+    }
     
+    //obtener una tienda por id
+    public Tienda getTiendabyId(int id){
+        Tienda t = null;
+        NodoLEG<E> aux=primero;
+        boolean existe=false;
+        
+        while(aux!=null && !existe){
+            if(aux.getDato().getCodSucursal() == id){
+                t = aux.getDato();
+            }
+            aux=aux.getSiguiente();
+        }
+        
+        return t;
+    }
     
 }
