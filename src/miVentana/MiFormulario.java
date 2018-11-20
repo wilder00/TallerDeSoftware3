@@ -18,6 +18,7 @@ import mis.clases.listaE.NodoLEG;
 public class MiFormulario extends javax.swing.JFrame {
     ListaLEG<Tienda> Sucursales;
     DefaultTableModel modelo;
+    int codSucursalDefinido;
     /**
      * Creates new form MiFormulario
      */
@@ -29,6 +30,22 @@ public class MiFormulario extends javax.swing.JFrame {
         modelo = new DefaultTableModel(null,Titulo);
         jTableListaTienda.setModel(modelo);
         
+        
+        //desabilitando botoneas
+        jButtonEncolarCliente.setEnabled(false);
+        jButtonclientesEnColaCaja1.setEnabled(false);
+        jButtonclientesEnColaCaja2.setEnabled(false);
+        jButtonclientesEnColaCaja3.setEnabled(false);
+        jButtonclientesEnColaCaja4.setEnabled(false);
+        jButtonclientesEnColaCaja5.setEnabled(false);
+        jButtonclientesEnColaCaja6.setEnabled(false);
+        jButtonclientesEnColaCaja7.setEnabled(false);
+        jButtonclientesEnColaCaja8.setEnabled(false);
+        jButtonclientesEnColaCaja9.setEnabled(false);
+        jButtonclientesEnColaCaja10.setEnabled(false);
+        jButtonVerRecaudacionDeCaja.setEnabled(false);
+        //definir la sucursal en -1 que significa no definido;
+        codSucursalDefinido = -1;
     }
 
     /**
